@@ -1,4 +1,3 @@
-// MainActivity.java
 package com.example.tetris;
 
 import android.os.Bundle;
@@ -16,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonLeft;
     private Button buttonRight;
     private Button buttonRotate;
+    private Button buttonFastDrop;
     private Handler handler;
     private Runnable gameLoopRunnable;
     private boolean isFastDrop = false;
@@ -33,11 +33,12 @@ public class MainActivity extends AppCompatActivity {
         buttonLeft = findViewById(R.id.buttonLeft);
         buttonRight = findViewById(R.id.buttonRight);
         buttonRotate = findViewById(R.id.buttonRotate);
+        buttonFastDrop = findViewById(R.id.buttonFastDrop);
 
         tetris.setLineCountListener(new Tetris.LineCountListener() {
             @Override
             public void onLineCountChanged(int newLineCount) {
-                lineCounter.setText("Lines: " + newLineCount);
+                lineCounter.setText("SCORE: " + newLineCount);
             }
         });
 
@@ -65,33 +66,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        tetrisView.setOnTouchListener(new View.OnTouchListener() {
+        buttonFastDrop.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    tetris.rotatePiece();
-                    tetrisView.invalidate();
-                    return true;
-                }
-                return false;
-            }
-        });
-
-        tetrisView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                isFastDrop = true;
-                return true;
-            }
-        });
-
-        tetrisView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    isFastDrop = true;
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     isFastDrop = false;
                 }
-                return false;
+                return true;
             }
         });
 

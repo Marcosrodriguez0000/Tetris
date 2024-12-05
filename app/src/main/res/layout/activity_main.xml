@@ -4,18 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/tetrisLogo"
+        android:layout_width="207dp"
+        android:layout_height="118dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/tetrisl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/lineCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lines: 0"
+        android:layout_marginTop="12dp"
+        android:fontFamily="monospace"
+        android:text="SCORE: 0"
+        android:textColor="#FFFFFF"
         android:textSize="18sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tetrisLogo" />
 
     <com.example.tetris.TetrisView
         android:id="@+id/tetrisView"
@@ -29,38 +43,69 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"/>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/buttonPanel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="16dp">
 
         <Button
-            android:id="@+id/buttonLeft"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/left"
-            android:text="" />
+            android:id="@+id/buttonFastDrop"
+            android:layout_width="66dp"
+            android:layout_height="59dp"
+            android:background="@drawable/fast_drop"
+            android:backgroundTint="#FFFFFF"
+            android:drawableTint="#FFFFFF"
+            android:foregroundTint="#FFFFFF"
+            android:text=""
+            android:textColorLink="#FFFFFF"
+            app:iconTint="#FFFFFF"
+            app:layout_constraintBottom_toTopOf="@id/buttonRight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.249"
+            app:layout_constraintStart_toStartOf="parent"
+            app:rippleColor="#FFFFFF"
+            app:strokeColor="#FFFFFF" />
 
         <Button
-            android:id="@+id/buttonRotate"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/rotate"
-            android:text="" />
+            android:id="@+id/buttonLeft"
+            android:layout_width="66dp"
+            android:layout_height="65dp"
+            android:background="@drawable/left"
+            android:backgroundTint="#FFFFFF"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/buttonFastDrop"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/buttonRight"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="60dp"
+            android:layout_height="64dp"
             android:background="@drawable/right"
-            android:text="" />
-    </LinearLayout>
+            android:backgroundTint="#FFFFFF"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@id/buttonFastDrop" />
+
+        <Button
+            android:id="@+id/buttonRotate"
+            android:layout_width="93dp"
+            android:layout_height="86dp"
+            android:background="@drawable/rotate"
+            android:text=""
+            android:backgroundTint="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@id/buttonRight" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
